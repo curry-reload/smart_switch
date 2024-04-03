@@ -20,13 +20,13 @@
 #define SERVO_LEDC_FREQUENCY          (50) // Frequency in Hertz. Set frequency at 50Hz
 
 #define SWITCH_ON_DEGREE        (10)
-#define SWITCH_OFF_DEGREE       (-20)
+#define SWITCH_OFF_DEGREE       (-30)
 
 void servo_driver_init(void);
 static uint32_t _convert_servo_angle_to_duty(int angle);
 static void servo_angle_ctrl(int angle);
 
-
+/****** public function ******/
 void servo_app_init(void)
 {
     servo_driver_init();
@@ -34,8 +34,12 @@ void servo_app_init(void)
 }
 
 void servo_app_switch(uint8_t onoff)
-{
-
+{   
+    if (onoff == 1) {
+        servo_angle_ctrl(SWITCH_ON_DEGREE);
+    } else if (onoff == 0) {
+        servo_angle_ctrl(SWITCH_OFF_DEGREE);
+    }
 }
 
 void servo_test(void)
@@ -51,7 +55,7 @@ void servo_test(void)
     }
 }
 
-// private function
+/****** private function ******/
 void servo_driver_init(void)
 {
     // Prepare and then apply the LEDC PWM timer configuration
