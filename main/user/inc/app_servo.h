@@ -2,6 +2,7 @@
 #define __APP_SERVO_H_
 
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef enum {
     SWITCH_NO_INIT,

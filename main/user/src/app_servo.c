@@ -30,7 +30,6 @@ static void servo_angle_ctrl(int angle);
 void servo_app_init(void)
 {
     servo_driver_init();
-    servo_angle_ctrl(10);
 }
 
 void servo_app_switch(uint8_t onoff)
